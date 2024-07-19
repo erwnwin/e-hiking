@@ -1,0 +1,26 @@
+.cardku {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+}
+
+.cardku:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    z-index: 10;
+}
+
+#card-bodyku {
+    transition: transform 0.3s ease;
+}
+
+.cardku:hover .card-bodyku {
+    transform: translateY(-10px);
+}
+
+/* Optional: Ensure the hover effect doesn't cause layout shift */
+.cardku-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Adjust as needed */
+}

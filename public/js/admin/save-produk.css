@@ -1,0 +1,31 @@
+.preview-images-zone {
+    display: flex;
+    flex-wrap: wrap;
+}
+.preview-image {
+    position: relative;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    padding: 5px;
+    border-radius: 5px;
+}
+.preview-image img {
+    max-width: 150px;
+    max-height: 150px;
+}
+.preview-image .preview-remove-btn {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background: #ff0000;
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    text-align: center;
+    line-height: 20px;
+    cursor: pointer;
+    font-size: 12px;
+}
