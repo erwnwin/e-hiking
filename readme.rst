@@ -16,3 +16,6 @@ Untuk info lebih lanjut silahkan hubungi saya
 ***************
 Terima Kasih || Titik Balik Teknologi
 ***************
+
+The CodeIgniter team would like to thank EllisLab, all the
+contributors to the CodeIgniter project and you, the CodeIgniter user.
