@@ -55,17 +55,19 @@ class Forgot_password extends CI_Controller
     private function _sendEmailReset($email, $token)
     {
         // Configure email settings
-        $config = [
-            'protocol' => 'smtp',
-            'smtp_host' => 'smtp.gmail.com',
-            'smtp_port' => 465,
-            'smtp_crypto' => 'ssl',
-            'smtp_user' => 'remindermyfinance@gmail.com', // Update with your Gmail address
-            'smtp_pass' => 'wexykdzulissqawy', // Update with your Gmail password
-            'mailtype' => 'html',
-            'charset' => 'utf-8',
-            'newline' => "\r\n"
-        ];
+        $config =
+            [
+                'protocol' => 'smtp',
+                'smtp_host' => 'ssl://smtp.gmail.com',
+                'smtp_user' => 'remindermyfinance@gmail.com',
+                'smtp_pass' => 'wexykdzulissqawy',
+                // 'smtp_port' => 587,
+                'smtp_port' => 465,
+                'mailtype' => 'html',
+                'charset' => 'utf-8',
+                'newline' => "\r\n"
+
+            ];
 
         $this->load->library('email', $config);
         $this->email->initialize($config);
@@ -75,10 +77,31 @@ class Forgot_password extends CI_Controller
         $this->email->to($email);
         $this->email->subject('Reset Password');
         $this->email->message('
-            <p>Klik link berikut untuk mereset password Anda:</p>
-            <a href="' . base_url('forgot_password/reset_password?email=' . urlencode($email) . '&token=' . urlencode($token)) . '">Reset Password</a>
-            <p>Jika Anda tidak meminta reset password, abaikan email ini.</p>
-        ');
+        <div style="font-family: Arial, sans-serif; max-width: 600px; margin: auto; padding: 20px; border: 1px solid #ddd; border-radius: 10px;">
+            <div style="text-align: center; margin-bottom: 30px;">
+                <h2 style="color: #1976d2;">Reset Password</h2>
+                <p style="font-size: 16px; color: #555;">Hai,</p>
+                <p style="font-size: 16px; color: #555;">Kami menerima permintaan untuk mereset password Anda.</p>
+            </div>
+            
+            <div style="text-align: center; margin-bottom: 30px;">
+                <a href="' . base_url('forgot_password/reset_password?email=' . urlencode($email) . '&token=' . urlencode($token)) . '" 
+                   style="display: inline-block; padding: 12px 24px; color: white; background-color: #1976d2; text-decoration: none; font-size: 16px; border-radius: 5px;">
+                   Reset Password
+                </a>
+            </div>
+    
+            <div style="text-align: center; margin-top: 20px;">
+                <p style="font-size: 14px; color: #888;">Jika Anda tidak meminta reset password, abaikan email ini.</p>
+                <p style="font-size: 14px; color: #888;">Pesan ini otomatis dikirim oleh sistem. Jangan membalas email ini.</p>
+            </div>
+            
+            <div style="text-align: center; margin-top: 30px;">
+                <p style="font-size: 12px; color: #aaa;">&copy; 2024 Titik  Balik Teknologi. All rights reserved.</p>
+            </div>
+        </div>
+    ');
+
 
         // Send email
         if ($this->email->send()) {

@@ -11,6 +11,7 @@ class Barang extends CI_Controller
         parent::__construct();
         $this->load->model('m_galeri');
         $this->load->model('m_barang');
+        $this->load->model('m_kategori');
         if ($this->session->userdata('status') != "login") {
             redirect(base_url("login"));
         }
@@ -23,31 +24,12 @@ class Barang extends CI_Controller
         $data['title'] = "Barang : e-Hiking";
         $data['produk'] = $this->m_barang->get_all_products();
 
-        $nama = $this->session->userdata('nama'); // Gantilah dengan nama yang sesuai dengan session Anda
-        $foto = $this->session->userdata('foto'); // Asumsikan 'foto' menyimpan URL foto pengguna
-
-        // Mendapatkan inisial dari nama
-        $nama_parts = explode(' ', $nama);
-
-        if (count($nama_parts) > 1) {
-            // Jika nama terdiri dari lebih dari satu kata, ambil huruf pertama dari setiap kata
-            $inisial = strtoupper(substr($nama_parts[0], 0, 1) . substr($nama_parts[1], 0, 1));
-        } else {
-            // Jika nama hanya satu kata, ambil dua huruf pertama dari kata tersebut
-            $inisial = strtoupper(substr($nama_parts[0], 0, 2));
-        }
-
-        // $data['greeting'] = $greeting;
-        $data['foto'] = $foto;
-        $data['inisial'] = $inisial;
-
-
-        $this->load->view('template/admin/head', $data);
-        $this->load->view('template/admin/navbar', $data);
-
+        $this->load->view('layouts/head', $data);
+        $this->load->view('layouts/header', $data);
+        $this->load->view('layouts/sidebar', $data);
 
         if (
-            $this->session->userdata('hak_akses') == '1' || $this->session->userdata('hak_akses') == '2'
+            $this->session->userdata('hak_akses') == '1' || $this->session->userdata('hak_akses') == '3'
         ) {
             $this->load->view('admin/barang/barang', $data);
         }
@@ -64,7 +46,7 @@ class Barang extends CI_Controller
             // $this->load->view('pelanggan/barang/list_barang', $data);
         }
 
-        $this->load->view('template/admin/footer', $data);
+        $this->load->view('layouts/footer', $data);
     }
 
 
@@ -73,11 +55,14 @@ class Barang extends CI_Controller
     public function create()
     {
         $data['title'] = "Create Barang : e-Hiking";
+        $data['kategori'] = $this->m_kategori->get_data();
+        $data['kd_produk'] = $this->m_barang->generate_product_code();
 
-        $this->load->view('template/admin/head', $data);
-        $this->load->view('template/admin/navbar', $data);
+        $this->load->view('layouts/head', $data);
+        $this->load->view('layouts/header', $data);
+        $this->load->view('layouts/sidebar', $data);
         $this->load->view('admin/barang/create_new_barang', $data);
-        $this->load->view('template/admin/footer', $data);
+        $this->load->view('layouts/footer', $data);
     }
 
     public function save()
@@ -88,7 +73,7 @@ class Barang extends CI_Controller
         $this->form_validation->set_rules('judul_produk', 'Judul Produk', 'required');
         $this->form_validation->set_rules('deskripsi_produk', 'Deskripsi Produk', 'required');
         $this->form_validation->set_rules('harga_produk', 'Harga Produk', 'required|numeric');
-        $this->form_validation->set_rules('kategori_produk', 'Kategori Produk', 'required');
+        $this->form_validation->set_rules('id_kategori', 'Kategori Produk', 'required');
 
         if ($this->form_validation->run() == FALSE) {
             $response['message'] = validation_errors();
@@ -97,9 +82,10 @@ class Barang extends CI_Controller
         }
 
         $judul_produk = $this->input->post('judul_produk');
+        $kode_produk = $this->input->post('kode_produk');
         $deskripsi_produk = $this->input->post('deskripsi_produk');
         $harga_produk = $this->input->post('harga_produk');
-        $kategori_produk = $this->input->post('kategori_produk');
+        $id_kategori = $this->input->post('id_kategori');
 
         // Proses upload gambar utama
         if (!empty($_FILES['main_image']['name'])) {
@@ -125,7 +111,7 @@ class Barang extends CI_Controller
         }
 
         // Simpan data produk
-        $product_id = $this->m_barang->insert_product($judul_produk, $deskripsi_produk, $harga_produk, $kategori_produk, $main_image_path);
+        $product_id = $this->m_barang->insert_product($judul_produk, $kode_produk, $deskripsi_produk, $harga_produk, $id_kategori, $main_image_path);
 
         if ($product_id) {
             // Proses upload gambar galeri
@@ -174,10 +160,24 @@ class Barang extends CI_Controller
             show_404();
         }
 
-        $this->load->view('template/admin/head', $data);
-        $this->load->view('template/admin/navbar', $data);
-        $this->load->view('pelanggan/barang/detail_barang', $data);
-        $this->load->view('template/admin/footer', $data);
+        $this->load->view('layouts/head', $data);
+        $this->load->view('layouts/header', $data);
+        $this->load->view('layouts/sidebar', $data);
+
+
+        if (
+            $this->session->userdata('hak_akses') == '1' ||  $this->session->userdata('hak_akses') == '3'
+        ) {
+            $this->load->view('admin/barang/detail_barang_ad', $data);
+        }
+
+        if (
+            $this->session->userdata('hak_akses') == '4'
+        ) {
+            $this->load->view('admin/barang/detail_barang_ad', $data);
+        }
+
+        $this->load->view('layouts/footer', $data);
     }
 }
 

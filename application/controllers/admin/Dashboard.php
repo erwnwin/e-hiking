@@ -21,14 +21,13 @@ class Dashboard extends CI_Controller
 
         if ($this->session->userdata('hak_akses') == "1" || $this->session->userdata('hak_akses') == "2" || $this->session->userdata('hak_akses') == "3") {
 
-            
-
             $data['title'] = "Dashboard : e-Hiking";
-            
-            $this->load->view('template/admin/head', $data);
-            $this->load->view('template/admin/navbar', $data);
+
+            $this->load->view('layouts/head', $data);
+            $this->load->view('layouts/header', $data);
+            $this->load->view('layouts/sidebar', $data);
             $this->load->view('admin/dashboard', $data);
-            $this->load->view('template/admin/footer', $data);
+            $this->load->view('layouts/footer', $data);
         }
 
         if ($this->session->userdata('hak_akses') == "4") {
@@ -63,10 +62,11 @@ class Dashboard extends CI_Controller
             $data['inisial'] = $inisial;
             $data['title'] = "Dashboard : e-Hiking";
 
-            $this->load->view('template/admin/head', $data);
-            $this->load->view('template/admin/navbar', $data);
+            $this->load->view('layouts/head', $data);
+            $this->load->view('layouts/header', $data);
+            $this->load->view('layouts/sidebar', $data);
             $this->load->view('pelanggan/dashboard', $data);
-            $this->load->view('template/admin/footer', $data);
+            $this->load->view('layouts/footer', $data);
         }
     }
 }

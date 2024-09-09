@@ -21,10 +21,12 @@ class Status_penyewaan extends CI_Controller
         $id_pelanggan = $this->session->userdata('id_pelanggan'); // Ambil ID pelanggan dari sesi
         $data['status_pesanan'] = $this->m_pemesanan->get_status($id_pelanggan);
 
-        $this->load->view('template/admin/head', $data);
-        $this->load->view('template/admin/navbar', $data);
+
+        $this->load->view('layouts/head', $data);
+        $this->load->view('layouts/header', $data);
+        $this->load->view('layouts/sidebar', $data);
         $this->load->view('pelanggan/penyewaan/status', $data);
-        $this->load->view('template/admin/footer', $data);
+        $this->load->view('layouts/footer', $data);
     }
 }
 

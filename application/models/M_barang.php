@@ -1,13 +1,14 @@
 <?php
 class M_barang extends CI_Model
 {
-    public function insert_product($judul_produk, $deskripsi_produk, $harga_produk, $kategori_produk, $main_image_path)
+    public function insert_product($judul_produk, $kode_produk, $deskripsi_produk, $harga_produk, $id_kategori, $main_image_path)
     {
         $data = array(
             'judul_produk' => $judul_produk,
+            'kode_produk' => $kode_produk,
             'deskripsi_produk' => $deskripsi_produk,
             'harga_produk' => $harga_produk,
-            'kategori_produk' => $kategori_produk,
+            'id_kategori' => $id_kategori,
             'gambar' => $main_image_path,
             'created_at' => date('Y-m-d H:i:s')
         );
@@ -52,8 +53,11 @@ class M_barang extends CI_Model
 
     public function get_all_products()
     {
-        $query = $this->db->get('produk');
-        return $query->result_array();
+        $this->db->select('produk.*, kategori.kategori'); // Pilih semua kolom dari produk dan kolom nama_kategori dari kategori
+        $this->db->from('produk');
+        $this->db->join('kategori', 'produk.id_kategori = kategori.id_kategori'); // Lakukan join tabel kategori dengan produk
+        $query = $this->db->get(); // Eksekusi query
+        return $query->result_array(); // Kembalikan hasil dalam bentuk array
     }
 
     public function check_stock($id)
@@ -72,5 +76,23 @@ class M_barang extends CI_Model
     public function get_product($id)
     {
         return $this->db->get_where('produk', ['id_produk' => $id])->row_array();
+    }
+
+
+    public function generate_product_code()
+    {
+        $this->db->select('RIGHT(kode_produk, 4) as code', FALSE);
+        $this->db->order_by('kode_produk', 'DESC');
+        $this->db->limit(1);
+        $query = $this->db->get('produk');
+
+        if ($query->num_rows() <> 0) {
+            $data = $query->row();
+            $code = intval($data->code) + 1;
+        } else {
+            $code = 1;
+        }
+        $kode = str_pad($code, 4, "0", STR_PAD_LEFT);
+        return 'PROD#' . $kode;
     }
 }

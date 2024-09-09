@@ -22,7 +22,6 @@
 
     <!-- Favicon icon-->
     <link rel="shortcut icon" type="image/x-icon" href="<?= base_url() ?>public/img/logo-head.png">
-    <!-- <link rel="shortcut icon" type="image/x-icon" href="../assets/images/favicon/favicon.ico" /> -->
 
     <!-- Color modes -->
     <script src="<?= base_url() ?>public/backend/assets/js/vendors/color-modes.js"></script>
@@ -34,11 +33,34 @@
 
     <!-- Theme CSS -->
     <link rel="stylesheet" href="<?= base_url() ?>public/backend/assets/css/theme.css">
+    <link rel="stylesheet" href="<?= base_url() ?>public/assets/css/gayaku.css">
 
     <!-- sweetalert -->
     <link rel="stylesheet" href="<?= base_url() ?>public/js/sweetalert2.min.css">
 
     <title><?= $title ?></title>
+
+    <style>
+        .loading-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(255, 255, 255, 0.8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 10;
+        }
+
+        .loading-overlay .spinner-border {
+            width: 3rem;
+            height: 3rem;
+        }
+    </style>
+
+
 </head>
 
 <body>
@@ -77,7 +99,7 @@
                             <div>
                                 <!-- Button -->
                                 <div class="d-grid">
-                                    <button type="submit" class="btn btn-primary" id="btnLogin">Login</button>
+                                    <button type="submit" class="btn btn-primaryku" id="btnLogin">Login</button>
                                 </div>
 
                                 <div class="d-md-flex justify-content-between mt-4">
@@ -85,11 +107,17 @@
                                         Belum punya akun? <a href="<?= base_url('register') ?>" class="fs-5">Buat Akun</a>
                                     </div>
                                     <div>
-                                        <a href="<?= base_url('lupa-password') ?>" class="text-inherit fs-5">Lupa password?</a>
+                                        <a href="<?= base_url('lupa-password') ?>" class="text-inverse fs-5">Lupa password?</a>
                                     </div>
                                 </div>
                             </div>
                         </form>
+                    </div>
+
+                    <div id="loadingOverlay" class="loading-overlay d-none">
+                        <div class="spinner-border text-primaryku" role="status">
+                            <!-- <span class="sr-only">Wait</span> -->
+                        </div>
                     </div>
                 </div>
             </div>

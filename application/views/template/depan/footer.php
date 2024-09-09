@@ -1,10 +1,6 @@
-	<!-- FOOTER -->
-	<footer id="footer">
-		<!-- top footer -->
-		<div class="section">
-			<!-- container -->
+<footer id="footer">
+	<!-- <div class="section">
 			<div class="container">
-				<!-- row -->
 				<div class="row">
 					<div class="col-md-3 col-xs-6">
 						<div class="footer">
@@ -59,44 +55,34 @@
 						</div>
 					</div>
 				</div>
-				<!-- /row -->
 			</div>
-			<!-- /container -->
-		</div>
-		<!-- /top footer -->
+		</div> -->
+	<div id="bottom-footer" class="section">
+		<div class="container">
+			<!-- row -->
+			<div class="row">
+				<div class="col-md-12 text-center">
 
-		<!-- bottom footer -->
-		<div id="bottom-footer" class="section">
-			<div class="container">
-				<!-- row -->
-				<div class="row">
-					<div class="col-md-12 text-center">
+					<span class="copyright">
+						Copyright &copy;<script>
+							document.write(new Date().getFullYear());
+						</script> Made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="" class="text-danger">Titik Balik Teknologi</a>
 
-						<span class="copyright">
-							<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-							Copyright &copy;<script>
-								document.write(new Date().getFullYear());
-							</script> Made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://#" target="_blank" class="text-danger">Titik Balik Teknologi</a>
-							<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-						</span>
-					</div>
+					</span>
 				</div>
-				<!-- /row -->
 			</div>
-			<!-- /container -->
 		</div>
-		<!-- /bottom footer -->
-	</footer>
-	<!-- /FOOTER -->
+	</div>
+</footer>
 
-	<!-- jQuery Plugins -->
-	<script src="<?= base_url() ?>public/frontend/home/js/jquery.min.js"></script>
-	<script src="<?= base_url() ?>public/frontend/home/js/bootstrap.min.js"></script>
-	<script src="<?= base_url() ?>public/frontend/home/js/slick.min.js"></script>
-	<script src="<?= base_url() ?>public/frontend/home/js/nouislider.min.js"></script>
-	<script src="<?= base_url() ?>public/frontend/home/js/jquery.zoom.min.js"></script>
-	<script src="<?= base_url() ?>public/frontend/home/js/main.js"></script>
+<!-- jQuery Plugins -->
+<script src="<?= base_url() ?>public/frontend/home/js/jquery.min.js"></script>
+<script src="<?= base_url() ?>public/frontend/home/js/bootstrap.min.js"></script>
+<script src="<?= base_url() ?>public/frontend/home/js/slick.min.js"></script>
+<script src="<?= base_url() ?>public/frontend/home/js/nouislider.min.js"></script>
+<script src="<?= base_url() ?>public/frontend/home/js/jquery.zoom.min.js"></script>
+<script src="<?= base_url() ?>public/frontend/home/js/main.js"></script>
 
-	</body>
+</body>
 
-	</html>
+</html>

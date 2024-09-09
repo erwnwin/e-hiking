@@ -49,7 +49,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 | Examples:	my-controller/index	-> my_controller/index
 |		my-controller/my-method	-> my_controller/my_method
 */
-$route['default_controller'] = 'my_home';
+$route['default_controller'] = 'depan/Home';
 
 
 $route['home'] = 'depan/home';
@@ -63,6 +63,7 @@ $route['barang'] = 'admin/barang';
 $route['barang/create'] = 'admin/barang/create';
 $route['barang/store'] = 'admin/barang/save';
 $route['barang/detail/(:num)'] = 'admin/barang/detail/$1';
+$route['barang/detail/(:num)'] = 'admin/barang/detail/$1';
 // $route['barang/store-image'] = 'admin/barang/save';
 
 // kategori
@@ -75,6 +76,9 @@ $route['kategori/store'] = 'admin/kategori/store';
 $route['users'] = 'admin/users';
 $route['users/create'] = 'admin/users/create';
 $route['users/store'] = 'admin/users/store';
+
+// info apps
+$route['info-apps'] = 'admin/Info_app';
 
 // login
 $route['logout'] = 'depan/login/logout';
@@ -92,9 +96,9 @@ $route['update-password'] = 'depan/forgot_password/reset_password';
 
 
 // laporan
-$route['laporan-penyewaan'] = 'depan/register';
-$route['laporan-denda'] = 'depan/register';
-$route['laporan-naive-bayes'] = 'depan/register';
+$route['laporan-penyewaan'] = 'admin/Laporan/Laporan_penyewaan';
+$route['laporan-denda'] = 'admin/Laporan/Laporan_denda';
+$route['laporan-naive-bayes'] = 'admin/Laporan/Laporan_naive_bayes';
 
 // penyewaan
 $route['form-penyewaan'] = 'cart';
@@ -104,7 +108,22 @@ $route['status-pengembalian'] = 'pengembalian/status_pengembalian';
 $route['pembayaran'] = 'pembayaran/pembayaran';
 $route['denda'] = 'pembayaran/denda';
 
+// penyewaan
+$route['penyewaan'] = 'admin/penyewaan/penyewaan';
+$route['penyewaan/update-status'] = 'admin/penyewaan/penyewaan/update_status';
+$route['penyewaan/detail/(:any)'] = 'admin/penyewaan/penyewaan/detail/$1';
 
+// pengembalian
+$route['pengembalian'] = 'admin/pengembalian/pengembalian';
+
+// 
+$route['payment-done'] = 'admin/pembayaran/pay_done';
+$route['payment-fine'] = 'admin/pembayaran/pay_fine';
+
+
+
+// admin
+$route['laporan-naive-bayes'] = 'admin/laporan/laporan_naive_bayes';
 // $route['cart/add_to_cart'] = 'cart/add_to_cart';
 // $route['cart/get_cart'] = 'cart/get_cart';
 // $route['cart/checkout'] = 'cart/checkout';
@@ -113,5 +132,5 @@ $route['denda'] = 'pembayaran/denda';
 // $route['cart/remove_from_cart'] = 'cart/remove_from_cart';
 
 
-$route['404_override'] = '';
+$route['404_override'] = 'Error_page';
 $route['translate_uri_dashes'] = FALSE;

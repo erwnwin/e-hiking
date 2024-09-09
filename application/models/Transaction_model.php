@@ -58,4 +58,11 @@ class Transaction_model extends CI_Model
 
         return $late_fee;
     }
+
+
+    public function update_status($transaction_id, $status)
+    {
+        $this->db->where('id', $transaction_id);
+        return $this->db->update('transactions', ['status' => $status]);
+    }
 }

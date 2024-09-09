@@ -1,12 +1,23 @@
-<!-- Container fluid -->
-<div class="container-fluid p-6">
-    <div class="row">
-        <div class="col-lg-12 col-md-12 col-12">
-            <!-- Page header -->
-            <div class="border-bottom pb-4 mb-2">
-                <h3 class="mb-0 fw-bold">Dendaku</h3>
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1>Dendaku</h1>
+                </div>
             </div>
+        </div><!-- /.container-fluid -->
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+        <div class="container-fluid">
         </div>
+    </section>
+
+    <div>
+        <br>
     </div>
-    <!-- row -->
 </div>

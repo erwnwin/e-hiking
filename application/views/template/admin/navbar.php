@@ -182,7 +182,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link has-arrow" href="<?= base_url('penyewaan') ?>">
+                        <a class="nav-link has-arrow <?= $this->uri->segment(1) == 'penyewaan' ? 'active' : '' ?>" href="<?= base_url('penyewaan') ?>">
                             <i data-feather="arrow-left-circle" class="nav-icon icon-xs me-2"></i> Penyewaan
                         </a>
                     </li>

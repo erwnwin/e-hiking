@@ -18,10 +18,11 @@ class Denda extends CI_Controller
     {
         $data['title'] = 'Denda : e-Hiking';
 
-        $this->load->view('template/admin/head', $data);
-        $this->load->view('template/admin/navbar', $data);
+        $this->load->view('layouts/head', $data);
+        $this->load->view('layouts/header', $data);
+        $this->load->view('layouts/sidebar', $data);
         $this->load->view('pelanggan/denda/dendaku', $data);
-        $this->load->view('template/admin/footer', $data);
+        $this->load->view('layouts/footer', $data);
     }
 }
 

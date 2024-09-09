@@ -1,0 +1,98 @@
+body {
+    background-color: #f0f8ff;
+    /* Change background color */
+}
+
+.card {
+    background-color: #ffffff;
+    /* Card background color */
+    border-radius: 10px;
+    /* Rounded corners */
+}
+
+.form-control {
+    border: 1px solid #ced4da;
+    /* Input border color */
+    border-radius: 5px;
+    /* Rounded corners for input fields */
+    background-color: #e9ecef;
+    /* Input background color */
+    color: #495057;
+    /* Input text color */
+}
+
+.form-control:focus,
+.form-control:active {
+    background-color: #e9ecef;
+    /* Maintain background color on focus/active */
+    border-color: #ced4da;
+    /* Maintain border color on focus/active */
+    box-shadow: none;
+    /* Remove default shadow */
+}
+
+.btn-primaryku {
+    background-color: #3C3633;
+    /* Button background color */
+    color: #ffffff !important;
+    border-color: #3C3633;
+    /* Button border color */
+    box-shadow: none;
+    /* Remove default shadow */
+    transition: background-color 0.3s, border-color 0.3s;
+    /* Smooth transition for color changes */
+}
+
+.btn-primaryku:hover,
+.btn-primaryku:focus,
+.btn-primaryku:active {
+    background-color: #AC7D88;
+    /* Button background color on hover/focus/active */
+    border-color: #A87C7C;
+    /* Button border color on hover/focus/active */
+    outline: none;
+    /* Remove default outline */
+    box-shadow: none;
+    /* Remove default shadow */
+}
+
+.btn-primaryku:focus {
+    background-color: #AC7D88;
+}
+
+.form-check-input:checked {
+    background-color: #3C3633;
+    /* Checkbox color */
+    border-color: #3C3633;
+    /* Checkbox border color */
+}
+
+.form-check-input:focus {
+    background-color: #3C3633;
+    /* Maintain checkbox color on focus */
+    border-color: #3C3633;
+    /* Maintain checkbox border color on focus */
+    outline: none;
+    /* Remove default outline */
+}
+
+.form-check-label {
+    color: #495057;
+    /* Checkbox label color */
+}
+
+.text-inverse {
+    color: #343a40;
+    /* Text color */
+}
+
+.fs-5 {
+    font-size: 1.25rem;
+    color: #343a40;
+    /* Font size for links */
+}
+
+.fs-5:hover {
+    color: #3C3633;
+    /* Font color on hover */
+}
